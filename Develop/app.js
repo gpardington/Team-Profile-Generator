@@ -40,6 +40,37 @@ const employeeQuestions = [
     }
 ]
 
+//Question for manager role
+const managerQuestions = () => {
+    return inquirer.prompt ([
+        {
+        type: "input",
+        name: "officeNumber",
+        message: "What is the Manager's office number?"
+        }
+    ])
+}
+//Question for Engineer role
+const engineerQuestions = () => {
+    return inquirer.prompt ([
+        {
+         type: "input",
+         name: "gitHubUserName",
+         message: "What is the Engineer's GitHub username?"   
+        }
+    ])
+}
+//Question for Intern role
+const internQuestions = () => {
+    return inquirer.prompt ([
+        {
+        type: "input",
+        name:"school",
+        message: "What school did the Intern attend?"
+        }
+    ])
+}
+
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
