@@ -54,7 +54,7 @@ const engineerQuestions = () => {
     return inquirer.prompt ([
         {
          type: "input",
-         name: "gitHubUserName",
+         name: "githubUserName",
          message: "What is the Engineer's GitHub username?"   
         }
     ])
@@ -76,26 +76,29 @@ const createEmployee = async () => {
         let name = response.name;
         let id = response.id;
         let email = response.email;
-        let gitHubUserName = response.gitHubUserName;
-        let officeNumber = response.officeNumber;
-        let school = response.school;
+        let github = "";
+        let officeNumber = "";
+        let school = "";
         
         if (role === "Manager") {
             managerQuestions().then((response) => {
+                officeNumber = response.officeNumber;
                 let Employee = new Manager(name, id, email, officeNumber);
-                team.push(employee);
+                team.push(Employee);
                 addEmployee();
             })
         }else if (role === "Engineer") {
             engineerQuestions().then((response) => {
-                let Employee = new Engineer(name, id, email, gitHubUserName);
-                team.push(employee);
+                github = response.githubUserName;
+                let Employee = new Engineer(name, id, email, github);
+                team.push(Employee);
                 addEmployee();
             })
         }else if (role === "Intern") {
             internQuestions().then((response) => {
+                school = response.school;
                 let Employee = new Intern(name, id, email, school);
-                team.push(employee);
+                team.push(Employee);
                 addEmployee();
             })
         }
@@ -108,9 +111,9 @@ const addEmployee = async () => {
         type: "list",
         name: "addEmployee",
         message: "Do you have another employee to add to the team?",
-        choices: ["Yes", "No, I am finished adding employees."],
+        choices: ["Yes", "No, I am finished adding employees."]
         }
-    ]).then(async(response) => {
+    ]).then(async (response) => {
         if (response.addEmployee === "Yes") {
             createEmployee();
         }else if (response.addEmployee === "No, I am finished adding employees."){
@@ -123,7 +126,7 @@ const createTeam = () => {
     if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdirSync(OUTPUT_DIR);
     }
-    fs.writeFileSync(outputPath, render(team));
+    fs.writeFileSync(outputPath, render(team), "utf-8");
 };
 
 createEmployee();
