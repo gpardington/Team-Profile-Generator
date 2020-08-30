@@ -82,19 +82,19 @@ const createEmployee = async () => {
         
         if (role === "Manager") {
             managerQuestions().then((response) => {
-                let employee = new Manager(name, id, email, officeNumber);
+                let Employee = new Manager(name, id, email, officeNumber);
                 team.push(employee);
                 addEmployee();
             })
         }else if (role === "Engineer") {
             engineerQuestions().then((response) => {
-                let employee = new Engineer(name, id, email, gitHubUserName);
+                let Employee = new Engineer(name, id, email, gitHubUserName);
                 team.push(employee);
                 addEmployee();
             })
         }else if (role === "Intern") {
             internQuestions().then((response) => {
-                let employee = new Intern(name, id, email, school);
+                let Employee = new Intern(name, id, email, school);
                 team.push(employee);
                 addEmployee();
             })
@@ -108,12 +108,12 @@ const addEmployee = async () => {
         type: "list",
         name: "addEmployee",
         message: "Do you have another employee to add to the team?",
-        choices: ["Yes", "No, I am finished adding employees."]
+        choices: ["Yes", "No, I am finished adding employees."],
         }
     ]).then(async(response) => {
         if (response.addEmployee === "Yes") {
             createEmployee();
-        }else if (response.addEmployee === "No, Iam finished adding employees."){
+        }else if (response.addEmployee === "No, I am finished adding employees."){
             createTeam();
         }
     })
