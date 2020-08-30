@@ -9,11 +9,13 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const { off } = require("process");
+const engineer = require("./lib/Engineer");
 
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-const teamArray = [];
+const team = [];
 
 //Questions user will answer for each employee type
 const employeeQuestions = [
@@ -39,7 +41,7 @@ const employeeQuestions = [
         message: "What is the employee's email address?"
     }
 ]
-
+//Different questions for each different role
 //Question for manager role
 const managerQuestions = () => {
     return inquirer.prompt ([
@@ -71,6 +73,38 @@ const internQuestions = () => {
     ])
 }
 
+const createEmployee = async () => {
+    await inquirer.prompt(employeeQuestions).then((response) => {
+        let role = response.role;
+        let name = response.name;
+        let id = response.id;
+        let email = response.email;
+        let gitHubUserName = response.gitHubUserName;
+        let officeNumber = response.officeNumber;
+        let school = response.school;
+        
+        if (role === "Manager") {
+            managerQuestions().then((response) => {
+                let employee = manager(name, id, email, officeNumber);
+                team.push(employee);
+                addEmployee();
+            })
+        }else if (role === "Engineer") {
+            engineerQuestions().then((response) => {
+                let employee = engineer(name, id, email, gitHubUserName);
+                team.push(employee);
+                addEmployee();
+            })
+        }else if (role === "Intern") {
+            internQuestions().then((response) => {
+                let employee = intern(name, id, email, school);
+                team.push(employee);
+                addEmployee();
+            })
+        }
+    })
+}
+
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
@@ -81,9 +115,6 @@ const internQuestions = () => {
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
 
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
 
 // HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
 // and Intern classes should all extend from a class named Employee; see the directions
