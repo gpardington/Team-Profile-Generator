@@ -104,6 +104,32 @@ const createEmployee = async () => {
         }
     })
 }
+//Continue adding employee or select complete
+const addEmployee = async () => {
+    await inquirer.prompt ([
+        {
+        type: "list",
+        name: "addEmployee",
+        message: "Do you have another employee to add to the team?",
+        choices: ["Yes", "No, I am finished adding employees."];
+        }
+    ]).then(async(response) => {
+        if (response.addEmployee === "Yes" {
+            createEmployee();
+        }else if (response.addEmployee === "No, Iam finished adding employees."){
+            createTeam();
+        }
+    })
+}
+//Creates the team by making a directory which then is sent to team.html
+const createTeam = () => {
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR);
+    }
+    fs.writeFileSync(outputPath, render(team));
+};
+
+createEmployee();
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
