@@ -64,7 +64,7 @@ const internQuestions = () => {
     return inquirer.prompt ([
         {
         type: "input",
-        name:"school",
+        name: "school",
         message: "What school did the Intern attend?"
         }
     ])
@@ -82,19 +82,19 @@ const createEmployee = async () => {
         
         if (role === "Manager") {
             managerQuestions().then((response) => {
-                let employee = manager(name, id, email, officeNumber);
+                let employee = new Manager(name, id, email, officeNumber);
                 team.push(employee);
                 addEmployee();
             })
         }else if (role === "Engineer") {
             engineerQuestions().then((response) => {
-                let employee = engineer(name, id, email, gitHubUserName);
+                let employee = new Engineer(name, id, email, gitHubUserName);
                 team.push(employee);
                 addEmployee();
             })
         }else if (role === "Intern") {
             internQuestions().then((response) => {
-                let employee = intern(name, id, email, school);
+                let employee = new Intern(name, id, email, school);
                 team.push(employee);
                 addEmployee();
             })
