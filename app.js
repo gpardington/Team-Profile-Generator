@@ -9,9 +9,6 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-const { off } = require("process");
-const engineer = require("./lib/Engineer");
-
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -111,10 +108,10 @@ const addEmployee = async () => {
         type: "list",
         name: "addEmployee",
         message: "Do you have another employee to add to the team?",
-        choices: ["Yes", "No, I am finished adding employees."];
+        choices: ["Yes", "No, I am finished adding employees."]
         }
     ]).then(async(response) => {
-        if (response.addEmployee === "Yes" {
+        if (response.addEmployee === "Yes") {
             createEmployee();
         }else if (response.addEmployee === "No, Iam finished adding employees."){
             createTeam();
