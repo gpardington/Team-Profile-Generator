@@ -27,7 +27,7 @@ Team Profile Generator
   https://youtu.be/u1gKw7Zi1hw
   
   Here is a screenshot of the end result:
-  ![home](https://github.com/gpardington/Team-Profile-Generator/blob/master/Assets/Team-Profile-Generator-Screenshot.png)
+  ![home](https://github.com/gpardington/Team-Profile-Generator/blob/master/Assets/screenshot.png)
 
   ### License
   Unlicensed

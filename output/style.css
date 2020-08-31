@@ -1,0 +1,26 @@
+body {
+    background-image: url("../Assets/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    margin-bottom: 50px;
+}
+
+.jumbotron {
+    background-color: rgb(74, 14, 185);
+    color: white;
+    border: solid 3px black;
+    height: 30px;
+}
+
+.card-header {
+    background-color: rgb(189, 11, 224)
+}
+
+.card {
+    margin: 15px;
+    box-shadow: 6px 6px 6px black;
+}
