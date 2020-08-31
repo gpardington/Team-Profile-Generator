@@ -36,7 +36,7 @@ Team Profile Generator
   Grant Pardington
 
   ### Tests
-  Yes. There is an "npm test" package installed. To try it, run "npm test" in the itegrated terminal.
+  Yes. There is an "npm run test" package installed. To try it, run "npm test" in the itegrated terminal.
 
   ### Questions
   If you have any qquestions feel free to contact me at grant.pardington@gmail.com
