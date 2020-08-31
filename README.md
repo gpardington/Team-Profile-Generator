@@ -21,6 +21,7 @@ Team Profile Generator
   Once the application has been loaded to the user's machine, the user will run command "node app.js" in the integrated terminal at the root directory. Then, the user will be prompted with a series of questions. First, they will need to select the role of the employee they are wanting to add, then they will enter the employee's name, ID number, email address, and a couple other questions that are role specific. After the user has entered all of the employees, they can select, "No, I am finished adding employees," and an HTML page will be automatically generated.
 
   Here is a demo of the application:
+  
   ![home](https://github.com/gpardington/Team-Profile-Generator/blob/master/Assets/demo.gif)
 
   https://youtu.be/u1gKw7Zi1hw
